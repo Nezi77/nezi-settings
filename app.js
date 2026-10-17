@@ -48,7 +48,7 @@ onAuthStateChanged(auth,u=>{unsubQR&&unsubQR();
  if(approveId&&!u)showLogin(true);});
 function showLogin(note){$('#appNote').style.display=note?'block':'none';open('#mLogin')}
 $('#bLogin').onclick=()=>showLogin();
-$('#bDo').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('#lg').value.trim().toLowerCase()+'@'+ADMIN_DOMAIN,$('#pw').value);$('#pw').value=''}catch(e){$('#lerr').textContent='Ошибка: '+(e.code||e.message)}};
+$('#bDo').onclick=async()=>{try{await signInWithEmailAndPassword(auth,(l=>l.includes('@')?l:l+'@'+ADMIN_DOMAIN)($('#lg').value.trim().toLowerCase()),$('#pw').value);$('#pw').value=''}catch(e){$('#lerr').textContent='Ошибка: '+(e.code||e.message)}};
 $('#bOut').onclick=async()=>{await signOut(auth);toast('Вы вышли')};
 $('#bQR').onclick=async()=>{const u=auth.currentUser?.isAnonymous?auth.currentUser:(await signInAnonymously(auth)).user;
  $('#qrwrap').style.display='block';$('#qrbox').innerHTML='';new QRCode($('#qrbox'),{text:location.origin+location.pathname+'?approve='+u.uid,width:200,height:200})};
