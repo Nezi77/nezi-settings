@@ -2,183 +2,179 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050708">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F5F5F3">
 <title>Nezi Settings</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22none%22 stroke=%22%237fffd4%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%226%22 fill=%22%237fffd4%22/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2317181A%22/><text x=%2216%22 y=%2222%22 font-size=%2216%22 font-family=%22sans-serif%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>NS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root{--a1:#7fffd4;--a2:#8b7bff;--a3:#ff8fab;--bg:#050708;--speed:1;--blur:16px;--r:16px;--font:'Rajdhani';--txt:#eafffa;--mut:#ffffff8c;--ln:#ffffff14;--a1s:color-mix(in srgb,var(--a1) 12%,transparent)}
-*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:var(--font),system-ui,sans-serif;min-height:100vh;overflow-x:hidden;font-size:17px;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,color-mix(in srgb,var(--a1) 16%,transparent),transparent 70%);pointer-events:none;z-index:0}
-#pc{position:fixed;inset:0;z-index:0;pointer-events:none}
-.blob{position:fixed;width:42vw;height:42vw;border-radius:50%;filter:blur(110px);opacity:.16;z-index:0;pointer-events:none;animation:fl calc(22s/var(--speed)) ease-in-out infinite alternate}
-.b1{background:var(--a1);top:-10vw;left:-12vw}.b2{background:var(--a2);right:-14vw;top:30vh;animation-delay:-7s}.b3{background:var(--a3);bottom:-20vw;left:30vw;opacity:.09;animation-delay:-12s}
-body.noblobs .blob{display:none}
-@keyframes fl{to{transform:translate(8vw,6vh) scale(1.2)}}
-.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 70%);animation:gm calc(30s/var(--speed)) linear infinite}
-body.nogrid .grid{display:none}
-@keyframes gm{to{background-position:56px 56px}}
-#glow{position:fixed;width:380px;height:380px;border-radius:50%;background:radial-gradient(var(--a1),transparent 65%);opacity:.07;pointer-events:none;transform:translate(-50%,-50%);z-index:0}
-body.noglow #glow{display:none}
-header,main,footer{position:relative;z-index:1;max-width:1120px;margin:auto;padding-left:20px;padding-right:20px}
-header{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px;gap:10px;flex-wrap:wrap}
-.logo{font-weight:700;font-size:24px;letter-spacing:1.5px;display:flex;gap:10px;align-items:center;text-transform:uppercase}
-.logo i{width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 16px var(--a1);animation:pu calc(2.4s/var(--speed)) infinite}
-@keyframes pu{50%{transform:scale(1.7);opacity:.5}}
-.btn{background:var(--a1);color:#02130e;border:1px solid var(--a1);padding:10px 20px;border-radius:calc(var(--r)*.7);cursor:pointer;font:inherit;font-weight:700;letter-spacing:.3px;transition:.25s;white-space:nowrap}
-.btn:hover{box-shadow:0 0 26px color-mix(in srgb,var(--a1) 55%,transparent);transform:translateY(-2px)}
-.btn.g{background:transparent;color:var(--txt);border-color:var(--ln)}
-.btn.g:hover{border-color:var(--a1);color:var(--a1);box-shadow:none}
-.btn.d{background:transparent;color:var(--a3);border-color:color-mix(in srgb,var(--a3) 40%,transparent)}
-.btn.d:hover{background:var(--a3);color:#1a0006;box-shadow:0 0 20px color-mix(in srgb,var(--a3) 45%,transparent)}
-.btn.s{padding:6px 12px;font-size:14px}
-.hero{text-align:center;padding:36px 0 18px}
-.xh{width:84px;height:84px;margin:0 auto 18px;position:relative}
-.xh svg{width:100%;height:100%;overflow:visible}
-.xh .r{transform-origin:50% 50%;animation:rot calc(14s/var(--speed)) linear infinite}
-@keyframes rot{to{transform:rotate(360deg)}}
-.hero h1{font-size:clamp(42px,10vw,96px);line-height:1;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(110deg,#fff 0%,var(--a1) 35%,var(--a2) 60%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh calc(9s/var(--speed)) linear infinite}
-@keyframes sh{to{background-position:250% 0}}
-.hero p{color:var(--mut);margin-top:14px;font-size:clamp(16px,3.4vw,21px);max-width:620px;margin-inline:auto}
-.ul{height:2px;width:90px;margin:20px auto 0;background:linear-gradient(90deg,transparent,var(--a1),transparent);box-shadow:0 0 14px var(--a1);animation:ulw calc(4s/var(--speed)) ease-in-out infinite alternate}
-@keyframes ulw{to{width:200px}}
-.socs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-.soc{color:var(--txt);text-decoration:none;padding:8px 18px;border:1px solid var(--ln);border-radius:99px;font-weight:600;position:relative;transition:.25s;background:#ffffff05}
-.soc:hover{border-color:var(--a1);color:var(--a1);transform:translateY(-2px);box-shadow:0 6px 24px color-mix(in srgb,var(--a1) 20%,transparent)}
-.tabs{display:flex;gap:26px;justify-content:center;margin:34px 0 26px;border-bottom:1px solid var(--ln)}
-.tab{background:none;border:0;color:var(--mut);padding:10px 4px;position:relative;cursor:pointer;font:inherit;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:15px;transition:.2s}
-.tab::after{content:'';position:absolute;left:50%;bottom:-1px;height:2px;width:0;background:var(--a1);box-shadow:0 0 12px var(--a1);transition:.3s;transform:translateX(-50%)}
-.tab.on,.tab:hover{color:var(--txt)}.tab.on::after,.tab:hover::after{width:100%}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding-bottom:70px}
-.card{position:relative;background:linear-gradient(160deg,#ffffff08,#ffffff02);border:1px solid var(--ln);border-radius:var(--r);padding:20px;backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));animation:up .7s both;animation-delay:calc(var(--i)*60ms);transition:transform .25s,border-color .3s,box-shadow .3s;will-change:transform}
-.card::before{content:'';position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,var(--a1),transparent 65%)}
-.card:hover{border-color:color-mix(in srgb,var(--a1) 55%,transparent);box-shadow:0 14px 44px color-mix(in srgb,var(--a1) 14%,transparent)}
-@keyframes up{from{opacity:0;transform:translateY(26px)}}
-.top{display:flex;justify-content:space-between;align-items:center;font-size:13px;letter-spacing:2px;text-transform:uppercase}
-.tag{color:var(--a1)}.tag.crosshair{color:var(--a3)}.top span:last-child{color:var(--mut)}
-.card h3{margin:14px 0 4px;font-size:24px;font-weight:700}.card .d{color:var(--mut);margin-bottom:8px}
-.meta{color:var(--mut);font-size:13px;margin:6px 0 12px;letter-spacing:.5px}
-.ch{font-family:ui-monospace,Consolas,monospace;font-size:14px;background:#000;border:1px solid var(--ln);border-left:2px solid var(--a3);border-radius:10px;padding:14px;margin:12px 0 14px;color:var(--a1);word-break:break-all;user-select:all}
-.code{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:#000;border:1px solid var(--ln);border-radius:10px;padding:10px;max-height:96px;overflow:hidden;white-space:pre-wrap;word-break:break-all;color:#9fe;margin:12px 0 8px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.adm{display:none!important}body.admin .adm{display:inline-block!important}
-.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:60px 0}
-footer{text-align:center;color:var(--mut);padding:10px 20px 36px;font-size:14px}footer .socs{margin:0 0 16px}
-.modal{position:fixed;inset:0;background:#000b;backdrop-filter:blur(8px);z-index:50;display:none;align-items:center;justify-content:center;padding:14px}
-.modal.on{display:flex}
-.box{background:#0a0e10;border:1px solid var(--ln);border-top:2px solid var(--a1);border-radius:var(--r);padding:24px;width:min(480px,100%);max-height:92dvh;overflow:auto;animation:up .35s}
-.box h2{margin-bottom:14px;font-size:24px;letter-spacing:1px}
-.fld{margin-top:12px}label,.lb{display:block;font-size:13px;color:var(--mut);margin:0 0 6px;letter-spacing:.5px;text-transform:uppercase}
-input,select,textarea{width:100%;background:#000;border:1px solid var(--ln);border-radius:10px;color:var(--txt);padding:11px 12px;font:inherit;font-size:16px;transition:.2s}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--a1);box-shadow:0 0 0 3px var(--a1s)}
-textarea{min-height:170px;font-family:ui-monospace,monospace;font-size:13px}
-input[type=color]{padding:2px;height:44px;cursor:pointer}input[type=range]{padding:0;accent-color:var(--a1);height:28px}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#000;padding:4px;border-radius:12px;border:1px solid var(--ln)}
-.seg button{background:none;border:0;color:var(--mut);padding:10px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
-.seg button.on{background:var(--a1);color:#02130e}
-.err{color:var(--a3);margin-top:10px;min-height:20px;font-size:14px}
-.panel{background:#070a0c;border:1px solid var(--ln);border-radius:20px;width:min(980px,100%);height:min(700px,94dvh);display:grid;grid-template-columns:210px 1fr;overflow:hidden;animation:up .4s}
-.panel aside{border-right:1px solid var(--ln);padding:20px 14px;display:flex;flex-direction:column;gap:6px;background:#0006}
-.panel .ph{font-weight:700;font-size:20px;letter-spacing:1.5px;text-transform:uppercase;padding:0 8px 14px;color:var(--a1)}
-.nv{background:none;border:0;color:var(--mut);text-align:left;padding:11px 12px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;border-left:2px solid transparent}
-.nv:hover{color:var(--txt);background:#ffffff08}.nv.on{color:var(--a1);background:var(--a1s);border-left-color:var(--a1)}
+:root{--bg:#F5F5F3;--card:#fff;--tx:#17181A;--mu:#707277;--ln:#DFE0DD;--sf:#ECEDEB;--ac:#17181A;--r:12px;--font:'Inter';--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 var(--font),system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--tx);outline-offset:2px}
+.wrap{max-width:1160px;margin:auto;padding:0 20px}
+.hd{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+.hd .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:700;letter-spacing:-.01em;text-decoration:none;display:flex;gap:10px;align-items:center}
+.logo b{background:var(--ac);color:#fff;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:12px}
+nav.m{display:flex;gap:4px;margin-left:12px}
+nav.m a{padding:8px 12px;border-radius:8px;color:var(--mu);text-decoration:none;font-size:15px;font-weight:500;transition:.18s}
+nav.m a:hover{background:var(--sf);color:var(--tx)}
 .sp{flex:1}
-.pmain{overflow:auto;padding:24px;position:relative}
-.pg{display:none}.pg.on{display:block;animation:up .35s}
-.pg h3{font-size:22px;margin-bottom:4px}.pg .sub{color:var(--mut);margin-bottom:16px;font-size:15px}
-.sec{margin:22px 0 10px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--a1);display:flex;align-items:center;gap:10px}
-.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--ln),transparent)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat{border:1px solid var(--ln);border-radius:14px;padding:16px;background:#ffffff04}
-.stat b{display:block;font-size:34px;color:var(--a1);line-height:1}.stat span{color:var(--mut);font-size:13px;letter-spacing:1px;text-transform:uppercase}
-.pres{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.pre{border:1px solid var(--ln);background:#000;border-radius:12px;padding:8px;cursor:pointer;color:var(--txt);font:inherit;font-size:13px;transition:.2s}
-.pre:hover{border-color:var(--a1);transform:translateY(-2px)}.pre i{display:block;height:30px;border-radius:8px;margin-bottom:6px}
-.tg{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--ln);border-radius:12px;cursor:pointer;color:var(--txt);font-size:16px;text-transform:none;letter-spacing:0;margin:0}
-.tg input{display:none}.tg b{width:42px;height:24px;border-radius:99px;background:#222;position:relative;transition:.25s}
-.tg b::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#888;transition:.25s}
-.tg input:checked+b{background:var(--a1)}.tg input:checked+b::after{left:21px;background:#02130e}
-.pbar{position:sticky;bottom:-24px;margin:24px -24px -24px;padding:14px 24px;background:linear-gradient(transparent,#070a0c 30%);display:none;gap:10px;align-items:center;flex-wrap:wrap}
-.pbar.on{display:flex}#pstat{color:var(--mut);font-size:14px;flex:1}#pstat.dirty{color:var(--a3)}
-.vis{border-bottom:1px solid var(--ln);padding:11px 0;font-size:14px;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
-.vis b{color:var(--a1)}.vis a{color:var(--a3)}.vis small{color:var(--mut);display:block;word-break:break-all}
-.vtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;flex-wrap:wrap;color:var(--mut)}
-#toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,120px);background:var(--a1);color:#02130e;padding:11px 24px;border-radius:99px;font-weight:700;z-index:99;transition:.4s}
-#toast.show{transform:translate(-50%,0)}
-#notice{position:fixed;bottom:14px;right:14px;max-width:330px;background:#0a0e10;border:1px solid var(--ln);border-top:2px solid var(--a2);border-radius:14px;padding:14px;z-index:40;font-size:14px;color:var(--mut)}
-#notice input{margin:8px 0}
-#qrbox{background:#fff;padding:12px;border-radius:12px;width:fit-content;margin:14px auto}
-@media(max-width:720px){
- body{font-size:16px}header{padding-top:14px}.logo{font-size:20px}
- .items{grid-template-columns:1fr;gap:14px}.tabs{gap:18px}
- .panel{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:100dvh;border-radius:0;border:0}
- #mPanel{padding:0}
- .panel aside{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--ln);padding:10px;align-items:center}
- .panel .ph,.sp{display:none}.nv{border-left:0;border-bottom:2px solid transparent;padding:10px 12px}.nv.on{border-bottom-color:var(--a1)}
- .pmain{padding:16px}.pbar{margin:20px -16px -16px;padding:12px 16px;bottom:-16px}
- .g4{grid-template-columns:1fr 1fr}.pres{grid-template-columns:1fr 1fr}
- #notice{left:10px;right:10px;max-width:none;bottom:10px}
- .btn{padding:11px 16px}.xh{width:68px;height:68px}
- .blob{filter:blur(70px)}.grid{animation:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ac);color:#fff;border:1px solid var(--ac);padding:10px 18px;border-radius:calc(var(--r) - 2px);font:600 15px var(--font);cursor:pointer;transition:.18s;text-decoration:none;min-height:42px}
+.btn:hover{opacity:.88}.btn:disabled{opacity:.5;cursor:wait}
+.btn.g{background:var(--card);color:var(--tx);border-color:var(--ln)}.btn.g:hover{border-color:var(--tx);opacity:1}
+.btn.r{background:none;border-color:transparent;color:#b3261e}.btn.r:hover{background:#fbeceb;opacity:1}
+.btn.s{padding:6px 12px;min-height:34px;font-size:14px}
+#burger{display:none}
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.lb{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.hero h1{font-size:clamp(34px,5.4vw,56px);line-height:1.08;letter-spacing:-.03em;margin:14px 0 16px;font-weight:700}
+.hero p{color:var(--mu);font-size:18px;max-width:520px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.hero .row{margin-top:28px}
+.socs{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.soc{padding:6px 14px;border:1px solid var(--ln);border-radius:99px;font-size:14px;font-weight:500;text-decoration:none;color:var(--mu);background:var(--card);transition:.18s}
+.soc:hover{color:var(--tx);border-color:var(--tx)}
+.dark{background:#17181A;color:#E8E9E6;border-radius:var(--r);padding:20px}
+.dark .lb{color:#8d8f94}
+.code{font:14px/1.6 var(--mono);word-break:break-all;margin:12px 0 16px;color:#fff}
+.dark .btn{background:#fff;color:#17181A;border-color:#fff}
+section.s{padding:56px 0;border-top:1px solid var(--ln)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.sh h2{font-size:28px;letter-spacing:-.02em;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);padding:20px;transition:border-color .18s,transform .18s;display:flex;flex-direction:column;gap:10px}
+.card:hover{border-color:#b9bbb7;transform:translateY(-1px)}
+.card h3{font-size:18px;letter-spacing:-.01em}.card p{color:var(--mu);font-size:15px}
+.meta{display:flex;justify-content:space-between;color:var(--mu);font-size:13px}
+.chip{background:var(--sf);border-radius:6px;padding:2px 8px;font:500 12px var(--mono);color:var(--tx);text-transform:uppercase}
+.pre{font:12.5px/1.55 var(--mono);background:var(--sf);border-radius:8px;padding:12px;white-space:pre-wrap;word-break:break-all;max-height:130px;overflow:auto;color:#3a3b3e}
+details summary{cursor:pointer;color:var(--mu);font-size:14px}details .pre{max-height:320px;margin-top:8px}
+.card .row{margin-top:auto;padding-top:6px}
+.kv{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--ln);font-size:15px}
+.kv:first-of-type{border-top:0}.kv span{color:var(--mu)}.kv b{font-weight:600;text-align:right;word-break:break-word}
+.tbl{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden}
+.br{display:grid;grid-template-columns:110px 1fr minmax(160px,1.1fr) auto;gap:14px;align-items:center;padding:12px 16px;border-top:1px solid var(--ln)}
+.br:first-child{border-top:0}.br code{font:13px var(--mono);background:var(--sf);padding:4px 8px;border-radius:6px;word-break:break-all}
+.key{font:500 12px var(--mono);border:1px solid var(--ln);border-bottom-width:2px;border-radius:6px;padding:2px 8px;width:fit-content}
+input,select,textarea{width:100%;background:var(--card);border:1px solid var(--ln);border-radius:calc(var(--r) - 2px);color:var(--tx);padding:10px 12px;font:16px var(--font);transition:.18s}
+input:hover,select:hover,textarea:hover{border-color:#b9bbb7}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--tx);box-shadow:0 0 0 3px #17181a14}
+textarea{min-height:150px;font:13px/1.5 var(--mono)}
+input[type=color]{padding:3px;height:42px}input[type=range]{padding:0;accent-color:var(--tx)}
+.srch{max-width:340px}
+.empty{color:var(--mu);padding:28px;border:1px dashed var(--ln);border-radius:var(--r);text-align:center;grid-column:1/-1}
+.fc{display:grid;grid-template-columns:repeat(3,1fr)}.fc div{padding:18px;border-left:1px solid var(--ln)}.fc div:first-child{border-left:0}
+.fc b{display:block;font-size:26px;letter-spacing:-.02em}.fc span{color:var(--mu);font-size:13px}
+footer{border-top:1px solid var(--ln);padding:36px 0 48px;color:var(--mu);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}footer .socs{margin:0}
+.modal{position:fixed;inset:0;background:#17181a66;z-index:60;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.box{background:var(--card);border-radius:16px;padding:24px;width:min(460px,100%);max-height:92dvh;overflow:auto;border:1px solid var(--ln)}
+.box h2{font-size:22px;letter-spacing:-.02em;margin-bottom:4px}.box .sub{color:var(--mu);font-size:14px;margin-bottom:8px}
+.f{margin-top:14px}.f label{display:block;font-size:13px;font-weight:500;color:var(--mu);margin-bottom:6px}
+.er{color:#b3261e;font-size:14px;min-height:20px;margin-top:10px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--sf);padding:4px;border-radius:10px;margin-top:14px}
+.seg button{background:none;border:0;padding:8px 4px;border-radius:7px;font:500 14px var(--font);color:var(--mu);cursor:pointer}
+.seg button.on{background:var(--card);color:var(--tx);box-shadow:0 1px 2px #0001}
+.pw{position:relative}.pw button{position:absolute;right:6px;top:6px;background:none;border:0;color:var(--mu);padding:6px 10px;cursor:pointer;font:500 13px var(--font)}
+/* admin */
+#adm{position:fixed;inset:0;background:var(--bg);z-index:50;display:none;grid-template-columns:240px 1fr}
+#adm.on{display:grid}
+#adm aside{background:var(--card);border-right:1px solid var(--ln);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+#adm aside .logo{padding:0 8px 18px}
+.nv{background:none;border:0;text-align:left;padding:10px 12px;border-radius:8px;color:var(--mu);font:500 15px var(--font);cursor:pointer;transition:.18s}
+.nv:hover{background:var(--sf);color:var(--tx)}.nv.on{background:var(--sf);color:var(--tx);font-weight:600}
+.am{overflow:auto;padding:32px;position:relative}
+.pg{display:none;max-width:760px}.pg.on{display:block}.pg.wide{max-width:none}
+.pg h1{font-size:26px;letter-spacing:-.02em}.pg>.sub{color:var(--mu);margin:4px 0 22px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);padding:16px}.stat b{font-size:30px;letter-spacing:-.02em;display:block}.stat span{color:var(--mu);font-size:13px}
+.panel{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.panel h3{font-size:15px;margin-bottom:2px}.panel .sub{color:var(--mu);font-size:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lr{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--ln)}.lr:first-child{border-top:0}
+.lr b{font-weight:600;display:block}.lr small{color:var(--mu)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.chips button{border:1px solid var(--ln);background:var(--card);border-radius:99px;padding:5px 14px;font:500 14px var(--font);cursor:pointer;color:var(--mu)}.chips button.on{background:var(--tx);color:#fff;border-color:var(--tx)}
+.sv{position:sticky;bottom:-32px;margin:24px -32px -32px;padding:14px 32px;background:var(--bg);border-top:1px solid var(--ln);display:none;gap:10px;align-items:center}.sv.on{display:flex}
+#st{flex:1;color:var(--mu);font-size:14px}#st.d{color:#b3261e}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,90px);background:var(--tx);color:#fff;padding:10px 20px;border-radius:10px;font-size:14px;font-weight:500;z-index:99;transition:.25s;max-width:90vw}
+#toast.show{transform:translate(-50%,0)}#toast.e{background:#b3261e}
+@media(max-width:860px){
+ .hero{grid-template-columns:1fr;padding:44px 0 36px;gap:28px}
+ nav.m{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:10px 20px;border-bottom:1px solid var(--ln);margin:0}
+ nav.m.open{display:flex}nav.m a{padding:12px}#burger{display:inline-flex}
+ .br{grid-template-columns:1fr auto;gap:8px}.br>:nth-child(3){grid-column:1/-1;order:3}
+ #adm{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+ #adm aside{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--ln);padding:8px;align-items:center}#adm aside .logo{display:none}.nv{white-space:nowrap}
+ .am{padding:18px}.sv{margin:20px -18px -18px;padding:12px 18px;bottom:-18px}.stats{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}
+ .lr{grid-template-columns:70px 1fr}.lr .row{grid-column:1/-1}.fc{grid-template-columns:1fr}.fc div{border-left:0;border-top:1px solid var(--ln)}.fc div:first-child{border-top:0}
+ .seg{grid-template-columns:1fr 1fr}section.s{padding:40px 0}
 }
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<canvas id="pc"></canvas><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div id="glow"></div>
-<header><div class="logo"><i></i><span id="logo">Nezi Settings</span></div>
-<div class="row"><button class="btn adm" id="bNew">＋ Добавить</button><button class="btn g adm" id="bPanel">⚙ Панель</button><button class="btn g" id="bLogin">Вход</button></div></header>
-<main>
-<section class="hero">
-<div class="xh"><svg viewBox="0 0 100 100" fill="none" stroke="var(--a1)" stroke-width="2"><g class="r"><circle cx="50" cy="50" r="40" stroke-dasharray="6 10" opacity=".6"/></g><circle cx="50" cy="50" r="26" opacity=".35"/><path d="M50 4v24M50 72v24M4 50h24M72 50h24" stroke-linecap="round"/><circle cx="50" cy="50" r="3" fill="var(--a3)" stroke="none"/></svg></div>
-<h1 id="title">Nezi Settings</h1><p id="sub"></p><div class="ul"></div><div class="socs" id="soc"></div></section>
-<div class="tabs"><button class="tab on" data-f="all">Все</button><button class="tab" data-f="cfg">CFG</button><button class="tab" data-f="crosshair">Прицелы</button></div>
-<div class="items" id="items"></div>
-</main>
-<footer><div class="socs" id="soc2"></div>© Nezi · CS2</footer>
+<header class="hd"><div class="wrap">
+<a class="logo" href="#top"><b>NS</b><span id="logo">Nezi Settings</span></a>
+<nav class="m" id="nav" aria-label="Разделы"><a href="#cfg">CFG</a><a href="#crosshair">Прицел</a><a href="#settings">Настройки</a><a href="#binds">Бинды</a><a href="#faceit">FACEIT</a></nav>
+<div class="sp"></div>
+<button class="btn g s" id="bPanel" style="display:none">Панель</button><button class="btn g s" id="bLogin">Войти</button>
+<button class="btn g s" id="burger" aria-label="Меню" aria-expanded="false">☰</button>
+</div></header>
+<main id="top">
+<div class="wrap"><section class="hero">
+<div><div class="lb">Counter-Strike 2 / Player settings</div><h1 id="hero">Мои настройки. Моя игра.</h1><p id="sub"></p>
+<div class="row"><button class="btn" id="hDl">Скачать CFG</button><a class="btn g" href="#crosshair">Посмотреть прицел</a></div><div class="socs" id="soc"></div></div>
+<div class="dark" id="hCh"></div></section></div>
+<div class="wrap">
+<section class="s" id="cfg"><div class="sh"><div><div class="lb">01 / Конфиги</div><h2>CFG</h2></div></div><div class="grid" id="gCfg"></div></section>
+<section class="s" id="crosshair"><div class="sh"><div><div class="lb">02 / Прицел</div><h2>Код прицела</h2></div></div><div class="grid" id="gCh"></div></section>
+<section class="s" id="settings"><div class="sh"><div><div class="lb">03 / Игра и ПК</div><h2>Настройки</h2></div></div><div class="grid" id="gSet"></div></section>
+<section class="s" id="binds"><div class="sh"><div><div class="lb">04 / Команды</div><h2>Бинды и команды</h2></div><input class="srch" id="bq" type="search" placeholder="Поиск по биндам…" aria-label="Поиск по биндам"></div><div class="tbl" id="gBind"></div></section>
+<section class="s" id="faceit"><div class="sh"><div><div class="lb">05 / Статистика</div><h2>FACEIT</h2></div></div><div id="gFc"></div></section>
+</div></main>
+<footer><div class="wrap"><div><b style="color:var(--tx)" id="fLogo">Nezi Settings</b><br>Неофициальный персональный проект. Не связан с Valve.</div><div class="socs" id="soc2"></div></div></footer>
 
-<div class="modal" id="mLogin"><div class="box"><h2>Вход для админа</h2>
-<div id="appNote" style="display:none;color:var(--a3)">Войдите, чтобы подтвердить вход на другом устройстве.</div>
-<div class="fld"><label>Почта</label><input id="lg" type="email" autocomplete="username"></div><div class="fld"><label>Пароль</label><input id="pw" type="password" autocomplete="current-password"></div>
-<div class="err" id="lerr"></div>
-<div class="row" style="margin-top:8px"><button class="btn" id="bDo">Войти</button><button class="btn g" id="bQR">QR-вход</button><button class="btn g" data-close>Закрыть</button></div>
-<div id="qrwrap" style="display:none;text-align:center"><div id="qrbox"></div><small style="color:var(--mut)">Отсканируйте телефоном, где вы уже вошли как админ, и подтвердите.</small></div></div></div>
+<div class="modal" id="mAuth" role="dialog" aria-modal="true" aria-labelledby="aT"><div class="box"><h2 id="aT">Вход</h2><div class="sub" id="aSub">Только для владельца сайта</div>
+<div class="f"><label for="lg">Почта</label><input id="lg" type="email" autocomplete="username"></div>
+<div class="f"><label for="pw">Пароль</label><div class="pw"><input id="pw" type="password" autocomplete="current-password"><button type="button" id="pwT">Показать</button></div></div>
+<div class="er" id="lerr" role="alert"></div>
+<div class="row" style="margin-top:6px"><button class="btn" id="bDo">Войти</button><button class="btn g" id="bQR">Вход по QR</button><button class="btn g" data-close>Закрыть</button></div>
+<div class="row" style="margin-top:12px"><button class="btn g s" id="bReset" style="border:0;color:var(--mu)">Забыли пароль?</button></div>
+<div id="qrwrap" style="display:none;text-align:center"><div id="qrbox" style="padding:12px;background:#fff;border:1px solid var(--ln);border-radius:12px;width:fit-content;margin:14px auto"></div><small style="color:var(--mu)">Отсканируйте телефоном, где вы уже вошли как владелец.</small></div></div></div>
 
-<div class="modal" id="mApprove"><div class="box"><h2>Подтвердить вход?</h2><p style="color:var(--mut)">Другое устройство запрашивает доступ админа.</p><div class="row" style="margin-top:16px"><button class="btn" id="bYes">Подтвердить</button><button class="btn g" data-close>Отмена</button></div></div></div>
+<div class="modal" id="mAp"><div class="box"><h2>Подтвердить вход?</h2><div class="sub">Другое устройство запрашивает доступ владельца. Подтверждайте, только если это вы.</div><div class="row" style="margin-top:16px"><button class="btn" id="bYes">Подтвердить</button><button class="btn g" data-close>Отмена</button></div></div></div>
 
-<div class="modal" id="mEdit"><div class="box"><h2 id="eh">Новая запись</h2>
-<div class="seg"><button data-ty="crosshair" class="on">Прицел</button><button data-ty="cfg">CFG</button></div>
-<div class="fld"><label>Название</label><input id="ei" maxlength="60" placeholder="Например: Мой основной"></div>
-<div class="fld" id="fch"><label>Код прицела</label><input id="ecode" placeholder="CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" spellcheck="false" autocomplete="off"></div>
-<div id="fcfg" style="display:none"><div class="fld"><label>Содержимое CFG</label><textarea id="ec" spellcheck="false"></textarea></div>
-<div class="row" style="margin-top:10px;align-items:center"><label class="btn g s" style="margin:0;text-transform:none">Загрузить файл<input type="file" id="ef" hidden></label><span id="fn" style="color:var(--mut);font-size:14px"></span></div></div>
-<div class="row" style="margin-top:20px"><button class="btn" id="bSave">Сохранить</button><button class="btn g" data-close>Отмена</button></div></div></div>
+<div class="modal" id="mEd" role="dialog" aria-modal="true"><div class="box" style="width:min(560px,100%)"><h2 id="eh">Новая запись</h2>
+<div class="seg" id="seg"><button data-ty="cfg" class="on">CFG</button><button data-ty="crosshair">Прицел</button><button data-ty="setting">Настройка</button><button data-ty="bind">Бинд</button></div>
+<div class="f"><label for="eT" id="lT">Название</label><input id="eT" maxlength="80"></div>
+<div class="f" id="fG"><label for="eG" id="lG">Группа</label><input id="eG" list="gl" maxlength="40"><datalist id="gl"><option>Мышь</option><option>Видео</option><option>ПК</option><option>Игра</option><option>Бинды</option><option>Команды</option></datalist></div>
+<div class="f" id="fK"><label for="eK">Клавиша</label><input id="eK" maxlength="20" placeholder="Например: MOUSE3"></div>
+<div class="f"><label for="eD" id="lD">Описание (необязательно)</label><input id="eD" maxlength="160"></div>
+<div class="f"><label for="eC" id="lC">Содержимое</label><textarea id="eC" spellcheck="false"></textarea></div>
+<div class="f" id="fF"><div class="row" style="align-items:center"><label class="btn g s" style="margin:0;color:var(--tx)">Загрузить .cfg<input type="file" id="eF" accept=".cfg,.txt,text/plain" hidden></label><span id="fn" style="color:var(--mu);font-size:14px"></span></div></div>
+<div class="er" id="eerr" role="alert"></div>
+<div class="row" style="margin-top:10px"><button class="btn" id="bSave">Сохранить</button><button class="btn g" data-close>Отмена</button></div></div></div>
 
-<div class="modal" id="mPanel"><div class="panel">
-<aside><div class="ph">Панель</div>
-<button class="nv on" data-p="ov">Обзор</button><button class="nv" data-p="ap">Внешний вид</button><button class="nv" data-p="tx">Тексты и ссылки</button><button class="nv" data-p="vs">Посетители</button>
-<div class="sp"></div><button class="nv" id="bOut" style="color:var(--a3)">Выйти</button><button class="nv" data-close>Закрыть ✕</button></aside>
-<section class="pmain">
-<div class="pg on" id="p-ov"><h3>Обзор</h3><div class="sub">Всё о вашем сайте в одном месте</div>
-<div class="g4"><div class="stat"><b id="sIt">0</b><span>Записей</span></div><div class="stat"><b id="sCh">0</b><span>Прицелов</span></div><div class="stat"><b id="sVi">0</b><span>Визитов</span></div><div class="stat"><b id="sUn">0</b><span>Уникальных</span></div></div>
-<div class="sec">Быстрые действия</div><div class="row"><button class="btn" id="qAdd">＋ Добавить запись</button><button class="btn g" data-go="ap">Настроить стиль</button><button class="btn g" data-go="vs">Кто заходил</button></div></div>
-<div class="pg" id="p-ap"><h3>Внешний вид</h3><div class="sub">Изменения видны сразу, не забудьте сохранить</div>
-<div class="sec">Готовые палитры</div><div class="pres" id="pres"></div>
-<div class="sec">Цвета</div><div class="g2"><div><label>Основной</label><input type="color" data-t="a1"></div><div><label>Акцент 2</label><input type="color" data-t="a2"></div><div><label>Акцент 3</label><input type="color" data-t="a3"></div><div><label>Фон</label><input type="color" data-t="bg"></div></div>
-<div class="sec">Форма и скорость</div><div class="g2"><div><label>Скорость анимаций</label><input type="range" min=".2" max="3" step=".1" data-t="speed"></div><div><label>Размытие стекла</label><input type="range" min="0" max="40" data-t="blur"></div><div><label>Скругление</label><input type="range" min="0" max="32" data-t="radius"></div><div><label>Шрифт</label><select data-t="font"><option>Rajdhani</option><option>Orbitron</option><option>Exo 2</option><option>Inter</option><option>Oswald</option></select></div></div>
-<div class="sec">Эффекты</div><div class="g2"><label class="tg">Свечение фона<input type="checkbox" data-t="blobs"><b></b></label><label class="tg">Сетка<input type="checkbox" data-t="grid"><b></b></label><label class="tg">Частицы<input type="checkbox" data-t="particles"><b></b></label><label class="tg">Свет за курсором<input type="checkbox" data-t="glow"><b></b></label><label class="tg">Наклон карточек<input type="checkbox" data-t="tilt"><b></b></label></div></div>
-<div class="pg" id="p-tx"><h3>Тексты и ссылки</h3><div class="sub">Заголовок, подзаголовок и соцсети</div>
-<div class="fld"><label>Название сайта</label><input data-t="title" maxlength="40"></div><div class="fld"><label>Подзаголовок</label><input data-t="sub" maxlength="140"></div>
-<div class="sec">Соцсети (пусто — скрыть)</div>
-<div class="fld"><label>guns.lol</label><input data-t="guns" placeholder="https://guns.lol/..."></div><div class="fld"><label>Telegram</label><input data-t="tg" placeholder="https://t.me/..."></div><div class="fld"><label>Steam</label><input data-t="steam" placeholder="https://steamcommunity.com/id/..."></div></div>
-<div class="pg" id="p-vs"><h3>Посетители</h3><div class="sub">Кто открывал сайт</div><div class="vtop"><span id="vcount"></span><button class="btn d s" id="vClear">Очистить всё</button></div><div id="vlist"></div></div>
-<div class="pbar" id="pbar"><span id="pstat">Всё сохранено</span><button class="btn g s" id="tReset">Сбросить</button><button class="btn" id="tSave">Сохранить</button></div>
-</section></div></div>
-
-<div id="notice"><b style="color:var(--txt)">Cookie и статистика</b><br>Сайт запоминает визит (IP, устройство). Можно указать Steam — по желанию.<input id="steam" placeholder="steamcommunity.com/id/..."><button class="btn s" id="nOk">Ок</button></div>
-<div id="toast"></div>
+<div id="adm" role="dialog" aria-label="Панель владельца"><aside><a class="logo" href="#top"><b>NS</b>Панель</a>
+<button class="nv on" data-p="ov">Обзор</button><button class="nv" data-p="ct">Публикации</button><button class="nv" data-p="fc">FACEIT</button><button class="nv" data-p="ap">Внешний вид</button><button class="nv" data-p="tx">Тексты и ссылки</button>
+<div class="sp"></div><button class="nv" id="bClose">← На сайт</button><button class="nv" id="bOut" style="color:#b3261e">Выйти</button></aside>
+<div class="am">
+<div class="pg on" id="p-ov"><h1>Обзор</h1><div class="sub">Только реальные данные из базы</div>
+<div class="stats"><div class="stat"><b id="sA">0</b><span>Всего записей</span></div><div class="stat"><b id="sC">0</b><span>CFG</span></div><div class="stat"><b id="sX">0</b><span>Прицелов</span></div><div class="stat"><b id="sB">0</b><span>Настроек и биндов</span></div></div>
+<div class="panel"><h3>Последнее изменение</h3><div class="sub" id="sL">—</div><div class="row" style="margin-top:14px"><button class="btn" id="qAdd">Добавить запись</button></div></div>
+<div class="panel"><h3>Данные посетителей</h3><div class="sub">Сбор IP и геолокации отключён. Кнопка ниже удаляет ранее собранные записи из коллекции visits.</div><div class="row" style="margin-top:14px"><button class="btn r" id="vClear">Удалить старые данные посетителей</button></div></div></div>
+<div class="pg wide" id="p-ct"><h1>Публикации</h1><div class="sub">CFG, прицелы, настройки и бинды</div><div class="row" style="margin-bottom:14px"><button class="btn" id="cAdd">Добавить</button></div><div class="chips" id="chips"></div><div class="panel" id="cList" style="padding:4px 20px"></div></div>
+<div class="pg" id="p-fc"><h1>FACEIT</h1><div class="sub">Заполняйте вручную: данные автоматически не подтягиваются</div><div class="panel"><div class="g2"><div class="f" style="margin:0"><label>Ник</label><input data-t="fcNick" maxlength="40"></div><div class="f" style="margin:0"><label>Ссылка на профиль</label><input data-t="fcUrl" placeholder="https://www.faceit.com/..."></div><div class="f"><label>Уровень</label><input data-t="fcLevel" maxlength="6"></div><div class="f"><label>ELO</label><input data-t="fcElo" maxlength="8"></div></div><div class="f"><label>Дата обновления данных</label><input data-t="fcUpd" type="date"></div></div></div>
+<div class="pg" id="p-ap"><h1>Внешний вид</h1><div class="sub">Безопасные параметры светлой темы</div><div class="panel"><div class="g2"><div class="f" style="margin:0"><label>Цвет кнопок</label><input type="color" data-t="accent"></div><div class="f" style="margin:0"><label>Шрифт</label><select data-t="font"><option>Inter</option><option>Manrope</option></select></div></div><div class="f"><label>Скругление углов</label><input type="range" min="6" max="20" data-t="radius"></div></div></div>
+<div class="pg" id="p-tx"><h1>Тексты и ссылки</h1><div class="sub">Заголовок, описание и соцсети</div><div class="panel"><div class="f" style="margin-top:0"><label>Название сайта</label><input data-t="title" maxlength="40"></div><div class="f"><label>Главный заголовок</label><input data-t="hero" maxlength="80"></div><div class="f"><label>Описание</label><input data-t="sub" maxlength="180"></div></div><div class="panel"><h3>Соцсети</h3><div class="sub">Пустое поле скрывает кнопку. Принимаются только https:// ссылки</div><div class="f"><label>guns.lol</label><input data-t="guns"></div><div class="f"><label>Telegram</label><input data-t="tg"></div><div class="f"><label>Steam</label><input data-t="steam"></div></div></div>
+<div class="sv" id="sv"><span id="st">Всё сохранено</span><button class="btn g s" id="tReset">Отменить</button><button class="btn" id="tSave">Сохранить</button></div>
+</div></div>
+<div id="toast" role="status" aria-live="polite"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script type="module" src="app.js"></script>
 </body></html>
