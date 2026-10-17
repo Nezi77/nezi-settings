@@ -2,110 +2,182 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050708">
 <title>Nezi Settings</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22none%22 stroke=%22%237fffd4%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%226%22 fill=%22%237fffd4%22/></svg>">
 <style>
-:root{--a1:#7fffd4;--a2:#8b7bff;--a3:#ff8fab;--bg:#06161a;--speed:1;--blur:18px;--r:18px;--font:'Rajdhani',sans-serif;--txt:#e8fffa}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--txt);font-family:var(--font),system-ui,sans-serif;min-height:100vh;overflow-x:hidden;font-size:17px}
+:root{--a1:#7fffd4;--a2:#8b7bff;--a3:#ff8fab;--bg:#050708;--speed:1;--blur:16px;--r:16px;--font:'Rajdhani';--txt:#eafffa;--mut:#ffffff8c;--ln:#ffffff14;--a1s:color-mix(in srgb,var(--a1) 12%,transparent)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--font),system-ui,sans-serif;min-height:100vh;overflow-x:hidden;font-size:17px;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,color-mix(in srgb,var(--a1) 16%,transparent),transparent 70%);pointer-events:none;z-index:0}
 #pc{position:fixed;inset:0;z-index:0;pointer-events:none}
-.blob{position:fixed;width:46vw;height:46vw;border-radius:50%;filter:blur(90px);opacity:.28;z-index:0;pointer-events:none;animation:fl calc(18s/var(--speed)) ease-in-out infinite alternate}
-.b1{background:var(--a1);top:-12vw;left:-10vw}.b2{background:var(--a2);right:-14vw;top:25vh;animation-delay:-6s}.b3{background:var(--a3);bottom:-18vw;left:25vw;opacity:.16;animation-delay:-11s}
+.blob{position:fixed;width:42vw;height:42vw;border-radius:50%;filter:blur(110px);opacity:.16;z-index:0;pointer-events:none;animation:fl calc(22s/var(--speed)) ease-in-out infinite alternate}
+.b1{background:var(--a1);top:-10vw;left:-12vw}.b2{background:var(--a2);right:-14vw;top:30vh;animation-delay:-7s}.b3{background:var(--a3);bottom:-20vw;left:30vw;opacity:.09;animation-delay:-12s}
 body.noblobs .blob{display:none}
-@keyframes fl{to{transform:translate(8vw,6vh) scale(1.2) rotate(40deg)}}
-.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(color-mix(in srgb,var(--a1) 7%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--a1) 7%,transparent) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 75%);animation:gm calc(20s/var(--speed)) linear infinite}
+@keyframes fl{to{transform:translate(8vw,6vh) scale(1.2)}}
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 70%);animation:gm calc(30s/var(--speed)) linear infinite}
 body.nogrid .grid{display:none}
-@keyframes gm{to{background-position:48px 48px}}
-#glow{position:fixed;width:360px;height:360px;border-radius:50%;background:radial-gradient(var(--a1),transparent 65%);opacity:.09;pointer-events:none;transform:translate(-50%,-50%);z-index:0}
-main,header{position:relative;z-index:1;max-width:1100px;margin:auto;padding:0 20px}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px}
-.logo{font-weight:700;font-size:26px;letter-spacing:1px;display:flex;gap:10px;align-items:center}
-.logo i{width:14px;height:14px;border-radius:50%;background:var(--a1);box-shadow:0 0 18px var(--a1);animation:pu calc(2s/var(--speed)) infinite}
-@keyframes pu{50%{transform:scale(1.6);opacity:.6}}
-.btn{background:color-mix(in srgb,var(--a1) 12%,transparent);color:var(--a1);border:1px solid color-mix(in srgb,var(--a1) 45%,transparent);padding:9px 18px;border-radius:calc(var(--r)*.7);cursor:pointer;font:inherit;font-weight:600;transition:.25s;backdrop-filter:blur(8px)}
-.btn:hover{background:var(--a1);color:#032;box-shadow:0 0 24px color-mix(in srgb,var(--a1) 60%,transparent);transform:translateY(-2px)}
-.btn.sec{color:var(--a2);border-color:color-mix(in srgb,var(--a2) 45%,transparent);background:color-mix(in srgb,var(--a2) 12%,transparent)}
-.btn.sec:hover{background:var(--a2);color:#fff;box-shadow:0 0 24px var(--a2)}
-.btn.del{color:var(--a3);border-color:color-mix(in srgb,var(--a3) 45%,transparent);background:color-mix(in srgb,var(--a3) 10%,transparent)}
-.btn.del:hover{background:var(--a3);color:#300}
-.hero{text-align:center;padding:60px 0 30px}
-.hero h1{font-size:clamp(44px,9vw,92px);line-height:1;font-weight:700;background:linear-gradient(110deg,var(--a1),var(--a2),var(--a3),var(--a1));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh calc(8s/var(--speed)) linear infinite;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a1) 40%,transparent))}
-@keyframes sh{to{background-position:300% 0}}
-.hero p{opacity:.75;margin-top:14px;font-size:20px}
-.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:26px 0}
-.tab.on{background:var(--a1);color:#032}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;padding-bottom:80px}
-.card{background:linear-gradient(145deg,color-mix(in srgb,var(--a1) 9%,transparent),color-mix(in srgb,var(--a2) 6%,transparent));border:1px solid color-mix(in srgb,var(--a1) 22%,transparent);border-radius:var(--r);padding:20px;backdrop-filter:blur(var(--blur));animation:up .7s both;animation-delay:calc(var(--i)*70ms);transition:transform .2s,border-color .3s,box-shadow .3s;transform-style:preserve-3d}
-.card:hover{border-color:var(--a1);box-shadow:0 10px 40px color-mix(in srgb,var(--a1) 22%,transparent)}
-@keyframes up{from{opacity:0;transform:translateY(30px) scale(.96)}}
-.tag{font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--a2) 22%,transparent);color:var(--a2)}
-.tag.crosshair{background:color-mix(in srgb,var(--a3) 22%,transparent);color:var(--a3)}.tag.cfg{background:color-mix(in srgb,var(--a1) 20%,transparent);color:var(--a1)}
-.card h3{margin:12px 0 4px;font-size:24px}.card .d{opacity:.7;margin-bottom:10px}
-.code{font-family:ui-monospace,Consolas,monospace;font-size:13px;background:#0006;border-radius:10px;padding:10px;max-height:110px;overflow:auto;white-space:pre-wrap;word-break:break-all;color:var(--a1);margin-bottom:12px}
+@keyframes gm{to{background-position:56px 56px}}
+#glow{position:fixed;width:380px;height:380px;border-radius:50%;background:radial-gradient(var(--a1),transparent 65%);opacity:.07;pointer-events:none;transform:translate(-50%,-50%);z-index:0}
+body.noglow #glow{display:none}
+header,main,footer{position:relative;z-index:1;max-width:1120px;margin:auto;padding-left:20px;padding-right:20px}
+header{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px;gap:10px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:24px;letter-spacing:1.5px;display:flex;gap:10px;align-items:center;text-transform:uppercase}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 16px var(--a1);animation:pu calc(2.4s/var(--speed)) infinite}
+@keyframes pu{50%{transform:scale(1.7);opacity:.5}}
+.btn{background:var(--a1);color:#02130e;border:1px solid var(--a1);padding:10px 20px;border-radius:calc(var(--r)*.7);cursor:pointer;font:inherit;font-weight:700;letter-spacing:.3px;transition:.25s;white-space:nowrap}
+.btn:hover{box-shadow:0 0 26px color-mix(in srgb,var(--a1) 55%,transparent);transform:translateY(-2px)}
+.btn.g{background:transparent;color:var(--txt);border-color:var(--ln)}
+.btn.g:hover{border-color:var(--a1);color:var(--a1);box-shadow:none}
+.btn.d{background:transparent;color:var(--a3);border-color:color-mix(in srgb,var(--a3) 40%,transparent)}
+.btn.d:hover{background:var(--a3);color:#1a0006;box-shadow:0 0 20px color-mix(in srgb,var(--a3) 45%,transparent)}
+.btn.s{padding:6px 12px;font-size:14px}
+.hero{text-align:center;padding:36px 0 18px}
+.xh{width:84px;height:84px;margin:0 auto 18px;position:relative}
+.xh svg{width:100%;height:100%;overflow:visible}
+.xh .r{transform-origin:50% 50%;animation:rot calc(14s/var(--speed)) linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.hero h1{font-size:clamp(42px,10vw,96px);line-height:1;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(110deg,#fff 0%,var(--a1) 35%,var(--a2) 60%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh calc(9s/var(--speed)) linear infinite}
+@keyframes sh{to{background-position:250% 0}}
+.hero p{color:var(--mut);margin-top:14px;font-size:clamp(16px,3.4vw,21px);max-width:620px;margin-inline:auto}
+.ul{height:2px;width:90px;margin:20px auto 0;background:linear-gradient(90deg,transparent,var(--a1),transparent);box-shadow:0 0 14px var(--a1);animation:ulw calc(4s/var(--speed)) ease-in-out infinite alternate}
+@keyframes ulw{to{width:200px}}
+.socs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.soc{color:var(--txt);text-decoration:none;padding:8px 18px;border:1px solid var(--ln);border-radius:99px;font-weight:600;position:relative;transition:.25s;background:#ffffff05}
+.soc:hover{border-color:var(--a1);color:var(--a1);transform:translateY(-2px);box-shadow:0 6px 24px color-mix(in srgb,var(--a1) 20%,transparent)}
+.tabs{display:flex;gap:26px;justify-content:center;margin:34px 0 26px;border-bottom:1px solid var(--ln)}
+.tab{background:none;border:0;color:var(--mut);padding:10px 4px;position:relative;cursor:pointer;font:inherit;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:15px;transition:.2s}
+.tab::after{content:'';position:absolute;left:50%;bottom:-1px;height:2px;width:0;background:var(--a1);box-shadow:0 0 12px var(--a1);transition:.3s;transform:translateX(-50%)}
+.tab.on,.tab:hover{color:var(--txt)}.tab.on::after,.tab:hover::after{width:100%}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding-bottom:70px}
+.card{position:relative;background:linear-gradient(160deg,#ffffff08,#ffffff02);border:1px solid var(--ln);border-radius:var(--r);padding:20px;backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));animation:up .7s both;animation-delay:calc(var(--i)*60ms);transition:transform .25s,border-color .3s,box-shadow .3s;will-change:transform}
+.card::before{content:'';position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,var(--a1),transparent 65%)}
+.card:hover{border-color:color-mix(in srgb,var(--a1) 55%,transparent);box-shadow:0 14px 44px color-mix(in srgb,var(--a1) 14%,transparent)}
+@keyframes up{from{opacity:0;transform:translateY(26px)}}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.tag{color:var(--a1)}.tag.crosshair{color:var(--a3)}.top span:last-child{color:var(--mut)}
+.card h3{margin:14px 0 4px;font-size:24px;font-weight:700}.card .d{color:var(--mut);margin-bottom:8px}
+.meta{color:var(--mut);font-size:13px;margin:6px 0 12px;letter-spacing:.5px}
+.ch{font-family:ui-monospace,Consolas,monospace;font-size:14px;background:#000;border:1px solid var(--ln);border-left:2px solid var(--a3);border-radius:10px;padding:14px;margin:12px 0 14px;color:var(--a1);word-break:break-all;user-select:all}
+.code{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:#000;border:1px solid var(--ln);border-radius:10px;padding:10px;max-height:96px;overflow:hidden;white-space:pre-wrap;word-break:break-all;color:#9fe;margin:12px 0 8px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-.adm{display:none}body.admin .adm{display:inline-block}
-.empty{grid-column:1/-1;text-align:center;opacity:.6;padding:50px}
-.modal{position:fixed;inset:0;background:#000a;backdrop-filter:blur(6px);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+.adm{display:none!important}body.admin .adm{display:inline-block!important}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:60px 0}
+footer{text-align:center;color:var(--mut);padding:10px 20px 36px;font-size:14px}footer .socs{margin:0 0 16px}
+.modal{position:fixed;inset:0;background:#000b;backdrop-filter:blur(8px);z-index:50;display:none;align-items:center;justify-content:center;padding:14px}
 .modal.on{display:flex}
-.box{background:#0a2228;border:1px solid color-mix(in srgb,var(--a1) 40%,transparent);border-radius:var(--r);padding:24px;width:min(640px,100%);max-height:92vh;overflow:auto;animation:up .4s}
-.box h2{margin-bottom:14px;color:var(--a1)}
-label{display:block;font-size:14px;opacity:.8;margin:10px 0 4px}
-input,select,textarea{width:100%;background:#0008;border:1px solid color-mix(in srgb,var(--a1) 30%,transparent);border-radius:10px;color:var(--txt);padding:10px;font:inherit}
-input[type=color]{padding:2px;height:40px}input[type=range]{padding:0}input[type=checkbox]{width:auto}
+.box{background:#0a0e10;border:1px solid var(--ln);border-top:2px solid var(--a1);border-radius:var(--r);padding:24px;width:min(480px,100%);max-height:92dvh;overflow:auto;animation:up .35s}
+.box h2{margin-bottom:14px;font-size:24px;letter-spacing:1px}
+.fld{margin-top:12px}label,.lb{display:block;font-size:13px;color:var(--mut);margin:0 0 6px;letter-spacing:.5px;text-transform:uppercase}
+input,select,textarea{width:100%;background:#000;border:1px solid var(--ln);border-radius:10px;color:var(--txt);padding:11px 12px;font:inherit;font-size:16px;transition:.2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--a1);box-shadow:0 0 0 3px var(--a1s)}
 textarea{min-height:170px;font-family:ui-monospace,monospace;font-size:13px}
-input:focus,textarea,select:focus{outline:none;border-color:var(--a1)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.vis{font-size:14px;border-bottom:1px solid #fff1;padding:8px 0;word-break:break-all}.vis b{color:var(--a1)}.vis a{color:var(--a3)}
-#toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,100px);background:var(--a1);color:#032;padding:10px 22px;border-radius:99px;font-weight:700;z-index:99;transition:.4s}
+input[type=color]{padding:2px;height:44px;cursor:pointer}input[type=range]{padding:0;accent-color:var(--a1);height:28px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#000;padding:4px;border-radius:12px;border:1px solid var(--ln)}
+.seg button{background:none;border:0;color:var(--mut);padding:10px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
+.seg button.on{background:var(--a1);color:#02130e}
+.err{color:var(--a3);margin-top:10px;min-height:20px;font-size:14px}
+.panel{background:#070a0c;border:1px solid var(--ln);border-radius:20px;width:min(980px,100%);height:min(700px,94dvh);display:grid;grid-template-columns:210px 1fr;overflow:hidden;animation:up .4s}
+.panel aside{border-right:1px solid var(--ln);padding:20px 14px;display:flex;flex-direction:column;gap:6px;background:#0006}
+.panel .ph{font-weight:700;font-size:20px;letter-spacing:1.5px;text-transform:uppercase;padding:0 8px 14px;color:var(--a1)}
+.nv{background:none;border:0;color:var(--mut);text-align:left;padding:11px 12px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;border-left:2px solid transparent}
+.nv:hover{color:var(--txt);background:#ffffff08}.nv.on{color:var(--a1);background:var(--a1s);border-left-color:var(--a1)}
+.sp{flex:1}
+.pmain{overflow:auto;padding:24px;position:relative}
+.pg{display:none}.pg.on{display:block;animation:up .35s}
+.pg h3{font-size:22px;margin-bottom:4px}.pg .sub{color:var(--mut);margin-bottom:16px;font-size:15px}
+.sec{margin:22px 0 10px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--a1);display:flex;align-items:center;gap:10px}
+.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--ln),transparent)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{border:1px solid var(--ln);border-radius:14px;padding:16px;background:#ffffff04}
+.stat b{display:block;font-size:34px;color:var(--a1);line-height:1}.stat span{color:var(--mut);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.pres{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pre{border:1px solid var(--ln);background:#000;border-radius:12px;padding:8px;cursor:pointer;color:var(--txt);font:inherit;font-size:13px;transition:.2s}
+.pre:hover{border-color:var(--a1);transform:translateY(-2px)}.pre i{display:block;height:30px;border-radius:8px;margin-bottom:6px}
+.tg{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--ln);border-radius:12px;cursor:pointer;color:var(--txt);font-size:16px;text-transform:none;letter-spacing:0;margin:0}
+.tg input{display:none}.tg b{width:42px;height:24px;border-radius:99px;background:#222;position:relative;transition:.25s}
+.tg b::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#888;transition:.25s}
+.tg input:checked+b{background:var(--a1)}.tg input:checked+b::after{left:21px;background:#02130e}
+.pbar{position:sticky;bottom:-24px;margin:24px -24px -24px;padding:14px 24px;background:linear-gradient(transparent,#070a0c 30%);display:none;gap:10px;align-items:center;flex-wrap:wrap}
+.pbar.on{display:flex}#pstat{color:var(--mut);font-size:14px;flex:1}#pstat.dirty{color:var(--a3)}
+.vis{border-bottom:1px solid var(--ln);padding:11px 0;font-size:14px;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+.vis b{color:var(--a1)}.vis a{color:var(--a3)}.vis small{color:var(--mut);display:block;word-break:break-all}
+.vtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;flex-wrap:wrap;color:var(--mut)}
+#toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,120px);background:var(--a1);color:#02130e;padding:11px 24px;border-radius:99px;font-weight:700;z-index:99;transition:.4s}
 #toast.show{transform:translate(-50%,0)}
-#notice{position:fixed;bottom:14px;right:14px;max-width:340px;background:#0a2228;border:1px solid var(--a2);border-radius:14px;padding:14px;z-index:40;font-size:14px}
+#notice{position:fixed;bottom:14px;right:14px;max-width:330px;background:#0a0e10;border:1px solid var(--ln);border-top:2px solid var(--a2);border-radius:14px;padding:14px;z-index:40;font-size:14px;color:var(--mut)}
+#notice input{margin:8px 0}
 #qrbox{background:#fff;padding:12px;border-radius:12px;width:fit-content;margin:14px auto}
-footer{text-align:center;opacity:.4;padding:30px;position:relative;z-index:1}
+@media(max-width:720px){
+ body{font-size:16px}header{padding-top:14px}.logo{font-size:20px}
+ .items{grid-template-columns:1fr;gap:14px}.tabs{gap:18px}
+ .panel{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:100dvh;border-radius:0;border:0}
+ #mPanel{padding:0}
+ .panel aside{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--ln);padding:10px;align-items:center}
+ .panel .ph,.sp{display:none}.nv{border-left:0;border-bottom:2px solid transparent;padding:10px 12px}.nv.on{border-bottom-color:var(--a1)}
+ .pmain{padding:16px}.pbar{margin:20px -16px -16px;padding:12px 16px;bottom:-16px}
+ .g4{grid-template-columns:1fr 1fr}.pres{grid-template-columns:1fr 1fr}
+ #notice{left:10px;right:10px;max-width:none;bottom:10px}
+ .btn{padding:11px 16px}.xh{width:68px;height:68px}
+ .blob{filter:blur(70px)}.grid{animation:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
 </style>
 </head>
 <body>
 <canvas id="pc"></canvas><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div id="glow"></div>
 <header><div class="logo"><i></i><span id="logo">Nezi Settings</span></div>
-<div class="row"><button class="btn adm" id="bNew">＋ Добавить</button><button class="btn sec adm" id="bPanel">⚙ Панель</button><button class="btn adm del" id="bOut">Выйти</button><button class="btn" id="bLogin">Вход</button></div></header>
+<div class="row"><button class="btn adm" id="bNew">＋ Добавить</button><button class="btn g adm" id="bPanel">⚙ Панель</button><button class="btn g" id="bLogin">Вход</button></div></header>
 <main>
-<section class="hero"><h1 id="title">Nezi Settings</h1><p id="sub">CFG, прицелы и настройки CS2 — всё в одном месте</p></section>
-<div class="tabs"><button class="btn tab on" data-f="all">Все</button><button class="btn tab" data-f="cfg">CFG</button><button class="btn tab" data-f="crosshair">Прицелы</button><button class="btn tab" data-f="settings">Настройки</button></div>
+<section class="hero">
+<div class="xh"><svg viewBox="0 0 100 100" fill="none" stroke="var(--a1)" stroke-width="2"><g class="r"><circle cx="50" cy="50" r="40" stroke-dasharray="6 10" opacity=".6"/></g><circle cx="50" cy="50" r="26" opacity=".35"/><path d="M50 4v24M50 72v24M4 50h24M72 50h24" stroke-linecap="round"/><circle cx="50" cy="50" r="3" fill="var(--a3)" stroke="none"/></svg></div>
+<h1 id="title">Nezi Settings</h1><p id="sub"></p><div class="ul"></div><div class="socs" id="soc"></div></section>
+<div class="tabs"><button class="tab on" data-f="all">Все</button><button class="tab" data-f="cfg">CFG</button><button class="tab" data-f="crosshair">Прицелы</button></div>
 <div class="items" id="items"></div>
 </main>
-<footer>© Nezi · CS2</footer>
+<footer><div class="socs" id="soc2"></div>© Nezi · CS2</footer>
 
 <div class="modal" id="mLogin"><div class="box"><h2>Вход для админа</h2>
 <div id="appNote" style="display:none;color:var(--a3)">Войдите, чтобы подтвердить вход на другом устройстве.</div>
-<label>Почта</label><input id="lg" type="email" autocomplete="username"><label>Пароль</label><input id="pw" type="password" autocomplete="current-password">
-<div id="lerr" style="color:var(--a3);margin-top:8px"></div>
-<div class="row" style="margin-top:14px"><button class="btn" id="bDo">Войти</button><button class="btn sec" id="bQR">Вход по QR</button><button class="btn del" data-close>Закрыть</button></div>
-<div id="qrwrap" style="display:none;text-align:center"><div id="qrbox"></div><small>Откройте камеру телефона, где вы уже вошли как админ, и подтвердите вход.</small></div></div></div>
+<div class="fld"><label>Почта</label><input id="lg" type="email" autocomplete="username"></div><div class="fld"><label>Пароль</label><input id="pw" type="password" autocomplete="current-password"></div>
+<div class="err" id="lerr"></div>
+<div class="row" style="margin-top:8px"><button class="btn" id="bDo">Войти</button><button class="btn g" id="bQR">QR-вход</button><button class="btn g" data-close>Закрыть</button></div>
+<div id="qrwrap" style="display:none;text-align:center"><div id="qrbox"></div><small style="color:var(--mut)">Отсканируйте телефоном, где вы уже вошли как админ, и подтвердите.</small></div></div></div>
 
-<div class="modal" id="mApprove"><div class="box"><h2>Подтвердить вход?</h2><p>Другое устройство запрашивает доступ админа.</p><div class="row" style="margin-top:14px"><button class="btn" id="bYes">Подтвердить</button><button class="btn del" data-close>Отмена</button></div></div></div>
+<div class="modal" id="mApprove"><div class="box"><h2>Подтвердить вход?</h2><p style="color:var(--mut)">Другое устройство запрашивает доступ админа.</p><div class="row" style="margin-top:16px"><button class="btn" id="bYes">Подтвердить</button><button class="btn g" data-close>Отмена</button></div></div></div>
 
 <div class="modal" id="mEdit"><div class="box"><h2 id="eh">Новая запись</h2>
-<div class="two"><div><label>Тип</label><select id="et"><option value="cfg">CFG файл</option><option value="crosshair">Код прицела</option><option value="settings">Настройки</option></select></div><div><label>Имя файла (для скачивания)</label><input id="en" placeholder="autoexec.cfg"></div></div>
-<label>Название</label><input id="ei"><label>Описание</label><input id="ed">
-<label>Содержимое (cfg-текст / код прицела / настройки)</label><textarea id="ec"></textarea>
-<label>Или загрузить файл</label><input type="file" id="ef">
-<div class="row" style="margin-top:14px"><button class="btn" id="bSave">Сохранить</button><button class="btn del" data-close>Отмена</button></div></div></div>
+<div class="seg"><button data-ty="crosshair" class="on">Прицел</button><button data-ty="cfg">CFG</button></div>
+<div class="fld"><label>Название</label><input id="ei" maxlength="60" placeholder="Например: Мой основной"></div>
+<div class="fld" id="fch"><label>Код прицела</label><input id="ecode" placeholder="CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx" spellcheck="false" autocomplete="off"></div>
+<div id="fcfg" style="display:none"><div class="fld"><label>Содержимое CFG</label><textarea id="ec" spellcheck="false"></textarea></div>
+<div class="row" style="margin-top:10px;align-items:center"><label class="btn g s" style="margin:0;text-transform:none">Загрузить файл<input type="file" id="ef" hidden></label><span id="fn" style="color:var(--mut);font-size:14px"></span></div></div>
+<div class="row" style="margin-top:20px"><button class="btn" id="bSave">Сохранить</button><button class="btn g" data-close>Отмена</button></div></div></div>
 
-<div class="modal" id="mPanel"><div class="box"><h2>Панель админа</h2>
-<div class="row"><button class="btn ptab on" data-p="th">Тема и анимации</button><button class="btn ptab" data-p="vs">Посетители</button></div>
-<div id="pth">
-<div class="two"><div><label>Основной цвет</label><input type="color" data-t="a1"></div><div><label>Акцент 2</label><input type="color" data-t="a2"></div><div><label>Акцент 3</label><input type="color" data-t="a3"></div><div><label>Фон</label><input type="color" data-t="bg"></div></div>
-<label>Скорость анимаций</label><input type="range" min=".2" max="3" step=".1" data-t="speed">
-<label>Размытие стекла</label><input type="range" min="0" max="40" data-t="blur">
-<label>Скругление</label><input type="range" min="0" max="36" data-t="radius">
-<label>Шрифт</label><select data-t="font"><option>Rajdhani</option><option>Orbitron</option><option>Exo 2</option><option>Inter</option><option>Oswald</option></select>
-<label>Заголовок</label><input data-t="title"><label>Подзаголовок</label><input data-t="sub">
-<div class="row" style="margin-top:12px"><label><input type="checkbox" data-t="blobs"> Свечение</label><label><input type="checkbox" data-t="grid"> Сетка</label><label><input type="checkbox" data-t="particles"> Частицы</label></div>
-<div class="row" style="margin-top:14px"><button class="btn" id="tSave">Сохранить тему</button><button class="btn sec" id="tReset">Сбросить</button></div></div>
-<div id="pvs" style="display:none"><div id="vlist"></div></div>
-<div class="row" style="margin-top:16px"><button class="btn del" data-close>Закрыть</button></div></div></div>
+<div class="modal" id="mPanel"><div class="panel">
+<aside><div class="ph">Панель</div>
+<button class="nv on" data-p="ov">Обзор</button><button class="nv" data-p="ap">Внешний вид</button><button class="nv" data-p="tx">Тексты и ссылки</button><button class="nv" data-p="vs">Посетители</button>
+<div class="sp"></div><button class="nv" id="bOut" style="color:var(--a3)">Выйти</button><button class="nv" data-close>Закрыть ✕</button></aside>
+<section class="pmain">
+<div class="pg on" id="p-ov"><h3>Обзор</h3><div class="sub">Всё о вашем сайте в одном месте</div>
+<div class="g4"><div class="stat"><b id="sIt">0</b><span>Записей</span></div><div class="stat"><b id="sCh">0</b><span>Прицелов</span></div><div class="stat"><b id="sVi">0</b><span>Визитов</span></div><div class="stat"><b id="sUn">0</b><span>Уникальных</span></div></div>
+<div class="sec">Быстрые действия</div><div class="row"><button class="btn" id="qAdd">＋ Добавить запись</button><button class="btn g" data-go="ap">Настроить стиль</button><button class="btn g" data-go="vs">Кто заходил</button></div></div>
+<div class="pg" id="p-ap"><h3>Внешний вид</h3><div class="sub">Изменения видны сразу, не забудьте сохранить</div>
+<div class="sec">Готовые палитры</div><div class="pres" id="pres"></div>
+<div class="sec">Цвета</div><div class="g2"><div><label>Основной</label><input type="color" data-t="a1"></div><div><label>Акцент 2</label><input type="color" data-t="a2"></div><div><label>Акцент 3</label><input type="color" data-t="a3"></div><div><label>Фон</label><input type="color" data-t="bg"></div></div>
+<div class="sec">Форма и скорость</div><div class="g2"><div><label>Скорость анимаций</label><input type="range" min=".2" max="3" step=".1" data-t="speed"></div><div><label>Размытие стекла</label><input type="range" min="0" max="40" data-t="blur"></div><div><label>Скругление</label><input type="range" min="0" max="32" data-t="radius"></div><div><label>Шрифт</label><select data-t="font"><option>Rajdhani</option><option>Orbitron</option><option>Exo 2</option><option>Inter</option><option>Oswald</option></select></div></div>
+<div class="sec">Эффекты</div><div class="g2"><label class="tg">Свечение фона<input type="checkbox" data-t="blobs"><b></b></label><label class="tg">Сетка<input type="checkbox" data-t="grid"><b></b></label><label class="tg">Частицы<input type="checkbox" data-t="particles"><b></b></label><label class="tg">Свет за курсором<input type="checkbox" data-t="glow"><b></b></label><label class="tg">Наклон карточек<input type="checkbox" data-t="tilt"><b></b></label></div></div>
+<div class="pg" id="p-tx"><h3>Тексты и ссылки</h3><div class="sub">Заголовок, подзаголовок и соцсети</div>
+<div class="fld"><label>Название сайта</label><input data-t="title" maxlength="40"></div><div class="fld"><label>Подзаголовок</label><input data-t="sub" maxlength="140"></div>
+<div class="sec">Соцсети (пусто — скрыть)</div>
+<div class="fld"><label>guns.lol</label><input data-t="guns" placeholder="https://guns.lol/..."></div><div class="fld"><label>Telegram</label><input data-t="tg" placeholder="https://t.me/..."></div><div class="fld"><label>Steam</label><input data-t="steam" placeholder="https://steamcommunity.com/id/..."></div></div>
+<div class="pg" id="p-vs"><h3>Посетители</h3><div class="sub">Кто открывал сайт</div><div class="vtop"><span id="vcount"></span><button class="btn d s" id="vClear">Очистить всё</button></div><div id="vlist"></div></div>
+<div class="pbar" id="pbar"><span id="pstat">Всё сохранено</span><button class="btn g s" id="tReset">Сбросить</button><button class="btn" id="tSave">Сохранить</button></div>
+</section></div></div>
 
-<div id="notice"><b>Cookie и статистика</b><br>Сайт запоминает ваш визит (IP, устройство). Можете указать Steam-профиль — по желанию.<input id="steam" placeholder="steamcommunity.com/id/..." style="margin:8px 0"><button class="btn" id="nOk">Ок</button></div>
+<div id="notice"><b style="color:var(--txt)">Cookie и статистика</b><br>Сайт запоминает визит (IP, устройство). Можно указать Steam — по желанию.<input id="steam" placeholder="steamcommunity.com/id/..."><button class="btn s" id="nOk">Ок</button></div>
 <div id="toast"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script type="module" src="app.js"></script>
